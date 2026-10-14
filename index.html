@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compas · Estudios e Inteligencia Institucional</title>
+<meta name="description" content="Unidad de estudios externa para Organismos Colaboradores Acreditados de Mejor Niñez y del Servicio de Reinserción Social Juvenil: acreditación, licitaciones, medición y arquitectura de datos.">
+<meta property="og:title" content="Compas · Estudios e Inteligencia Institucional">
+<meta property="og:description" content="Unidad de estudios externa para Organismos Colaboradores Acreditados. Acreditación, licitaciones, medición y datos.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CL">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16222e;
+  --ink-soft:#3c4a57;
+  --muted:#6b7682;
+  --paper:#f6f3ec;
+  --paper-2:#ece7dc;
+  --card:#fbfaf6;
+  --line:#d8d1c2;
+  --accent:#1f5a5c;
+  --accent-2:#b5652d;
+  --max:1120px;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+img,svg{display:block}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:16px;top:16px;background:var(--ink);color:#fff;padding:8px 12px;z-index:10}
+
+/* Header */
+header.site{position:sticky;top:0;z-index:5;background:rgba(246,243,236,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.brand-name{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:.02em}
+.brand-sub{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:-2px}
+nav.main ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+nav.main a{color:var(--ink-soft);text-decoration:none;font-size:15px}
+nav.main a:hover{color:var(--accent)}
+.nav-cta{background:var(--ink);color:var(--paper)!important;padding:8px 16px;border-radius:2px}
+.nav-cta:hover{background:var(--accent)}
+.menu-btn{display:none;background:none;border:1px solid var(--line);padding:8px 12px;font:inherit;color:var(--ink);cursor:pointer}
+
+/* Hero */
+.hero{padding:96px 0 88px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.35fr .9fr;gap:56px;align-items:center}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 20px}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.15;margin:0}
+h1{font-size:clamp(36px,5vw,58px);letter-spacing:-.01em}
+h1 em{font-style:italic;color:var(--accent)}
+.lead{font-size:19px;color:var(--ink-soft);margin:28px 0 36px;max-width:580px}
+.actions{display:flex;flex-wrap:wrap;gap:14px}
+.btn{display:inline-block;padding:13px 22px;text-decoration:none;font-weight:500;font-size:15px;border:1px solid var(--ink);border-radius:2px}
+.btn-primary{background:var(--ink);color:var(--paper)}
+.btn-primary:hover{background:var(--accent);border-color:var(--accent)}
+.btn-ghost{color:var(--ink)}
+.btn-ghost:hover{background:var(--paper-2)}
+.hero-mark{justify-self:center;width:100%;max-width:380px;color:var(--ink)}
+.hero-mark .faint{stroke:var(--line)}
+
+/* Sections */
+section{padding:96px 0;border-bottom:1px solid var(--line)}
+.sec-head{display:grid;grid-template-columns:220px 1fr;gap:48px;margin-bottom:56px}
+.sec-num{font-family:var(--serif);font-size:14px;color:var(--accent-2);letter-spacing:.1em;padding-top:10px;border-top:1px solid var(--ink);align-self:start}
+h2{font-size:clamp(30px,3.6vw,42px)}
+.sec-intro{color:var(--ink-soft);font-size:18px;margin:18px 0 0;max-width:720px}
+
+/* Pressures */
+.pressures{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.pressure{background:var(--card);padding:30px 26px}
+.pressure h3{font-size:20px;margin-bottom:12px}
+.pressure p{margin:0;font-size:15.5px;color:var(--ink-soft)}
+.pressure .tag{font-size:12px;color:var(--muted);letter-spacing:.06em;margin-top:16px;display:block}
+
+/* Value */
+.value{display:grid;grid-template-columns:repeat(2,1fr);gap:40px 56px}
+.value-item{border-left:2px solid var(--accent);padding-left:22px}
+.value-item h3{font-size:22px;margin-bottom:10px}
+.value-item p{margin:0;color:var(--ink-soft)}
+
+/* Services */
+.services{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.service{background:var(--card);border:1px solid var(--line);padding:36px 34px}
+.service .letter{font-family:var(--serif);font-size:44px;line-height:1;color:var(--accent);margin-bottom:14px}
+.service h3{font-size:24px;margin-bottom:10px}
+.service .desc{color:var(--ink-soft);margin:0 0 20px}
+.service ul{margin:0;padding:0;list-style:none}
+.service li{padding:10px 0 10px 22px;border-top:1px solid var(--paper-2);font-size:15.5px;position:relative}
+.service li::before{content:"";position:absolute;left:0;top:19px;width:10px;height:1px;background:var(--accent-2)}
+
+/* Modalities */
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.mode{padding:34px 30px;border:1px solid var(--ink);background:transparent}
+.mode h3{font-size:24px;margin-bottom:12px}
+.mode p{margin:0 0 18px;color:var(--ink-soft)}
+.mode .for{font-size:14px;color:var(--ink);border-top:1px solid var(--line);padding-top:14px;margin:0}
+.mode .for strong{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.note{margin-top:28px;font-size:15px;color:var(--muted);max-width:760px}
+
+/* Confidentiality */
+.dark{background:var(--ink);color:#e9e5dc;border-bottom:none}
+.dark h2{color:#fbf8f1}
+.dark .sec-num{border-top-color:#e9e5dc;color:#d99a6c}
+.dark .sec-intro{color:#c6cdd3}
+.guarantees{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:#33424f;border:1px solid #33424f}
+.guarantee{background:var(--ink);padding:30px 24px}
+.guarantee .n{font-family:var(--serif);font-size:15px;color:#d99a6c;display:block;margin-bottom:14px}
+.guarantee h3{font-size:19px;color:#fbf8f1;margin-bottom:12px}
+.guarantee p{margin:0;font-size:14.5px;color:#c6cdd3;line-height:1.6}
+
+/* Profile */
+.profile{display:grid;grid-template-columns:1.2fr 1fr;gap:64px}
+.profile p{color:var(--ink-soft);margin:0 0 18px}
+.skills{list-style:none;margin:0;padding:0}
+.skills li{padding:14px 0;border-top:1px solid var(--line);font-size:15.5px}
+.skills li:last-child{border-bottom:1px solid var(--line)}
+.skills strong{display:block;font-weight:600;color:var(--ink);font-size:14px;margin-bottom:2px}
+.sources{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.sources span{font-size:13px;border:1px solid var(--line);padding:5px 10px;background:var(--card);color:var(--ink-soft)}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s}
+.step{padding:0 28px 0 0;position:relative}
+.step::before{counter-increment:s;content:"0" counter(s);font-family:var(--serif);font-size:40px;color:var(--accent);display:block;margin-bottom:14px}
+.step::after{content:"";position:absolute;top:26px;left:66px;right:16px;height:1px;background:var(--line)}
+.step:last-child::after{display:none}
+.step h3{font-size:20px;margin-bottom:10px}
+.step p{margin:0;font-size:15.5px;color:var(--ink-soft)}
+.step .free{display:inline-block;margin-top:12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2);font-weight:600}
+
+/* Contact */
+.contact{background:var(--paper-2)}
+.contact-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:start}
+.contact-card{background:var(--card);border:1px solid var(--line);padding:36px}
+.contact-card dl{margin:0}
+.contact-card dt{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:20px}
+.contact-card dt:first-child{margin-top:0}
+.contact-card dd{margin:4px 0 0;font-size:18px}
+.contact-card dd a{text-decoration:none;color:var(--ink);border-bottom:1px solid var(--accent)}
+.contact-card dd a:hover{color:var(--accent)}
+
+/* Footer */
+footer{padding:40px 0;font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+footer p{margin:0}
+
+/* Responsive */
+@media (max-width:1000px){
+  .pressures{grid-template-columns:repeat(2,1fr)}
+  .guarantees{grid-template-columns:repeat(2,1fr)}
+  .guarantee:last-child{grid-column:1/-1}
+  .steps{grid-template-columns:repeat(2,1fr);gap:40px 0}
+  .step::after{display:none}
+}
+@media (max-width:820px){
+  body{font-size:16px}
+  .menu-btn{display:block}
+  nav.main{display:none;position:absolute;top:68px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line)}
+  nav.main.open{display:block}
+  nav.main ul{flex-direction:column;gap:0;padding:8px 24px 20px}
+  nav.main li a{display:block;padding:12px 0;border-bottom:1px solid var(--paper-2)}
+  .nav-cta{text-align:center;margin-top:12px}
+  .hero{padding:64px 0}
+  .hero .wrap{grid-template-columns:1fr}
+  .hero-mark{max-width:220px;order:-1;justify-self:start}
+  section{padding:68px 0}
+  .sec-head{grid-template-columns:1fr;gap:18px;margin-bottom:36px}
+  .sec-num{width:120px}
+  .value,.services,.modes,.profile,.contact-grid{grid-template-columns:1fr}
+  .profile,.contact-grid{gap:40px}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  .pressures,.guarantees,.steps{grid-template-columns:1fr}
+  .service,.mode,.contact-card{padding:28px 22px}
+  .brand-sub{display:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Ir al contenido</a>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Compas, inicio">
+      <svg width="34" height="34" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true">
+        <circle cx="32" cy="32" r="26"/>
+        <path d="M32 6v52M6 32h52" stroke-width="1.2"/>
+        <path d="M32 14 39 32 32 50 25 32Z" fill="#1f5a5c" stroke="none"/>
+        <circle cx="32" cy="32" r="3" fill="#f6f3ec" stroke="none"/>
+      </svg>
+      <span><span class="brand-name">Compas</span><span class="brand-sub">Estudios e Inteligencia Institucional</span></span>
+    </a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menú</button>
+    <nav class="main" id="menu" aria-label="Principal">
+      <ul>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#modalidades">Modalidades</a></li>
+        <li><a href="#confidencialidad">Confidencialidad</a></li>
+        <li><a href="#perfil">Perfil</a></li>
+        <li><a class="nav-cta" href="#contacto">Agendar reunión</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+
+<!-- HERO -->
+<div class="hero" id="inicio">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Mejor Niñez · Reinserción Social Juvenil</p>
+      <h1>La unidad de estudios externa de los <em>Organismos Colaboradores Acreditados</em></h1>
+      <p class="lead">Diagnósticos territoriales, procesos de acreditación, medición de resultados y bases de datos institucionales, elaborados con más de diez años de trabajo dentro de las redes de programas de protección especializada y justicia juvenil en Chile.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#contacto">Agendar reunión de diagnóstico</a>
+        <a class="btn btn-ghost" href="#servicios">Ver líneas de servicio</a>
+      </div>
+    </div>
+    <svg class="hero-mark" viewBox="0 0 400 400" fill="none" stroke="currentColor" aria-hidden="true">
+      <circle class="faint" cx="200" cy="200" r="190" stroke-width="1"/>
+      <circle class="faint" cx="200" cy="200" r="140" stroke-width="1"/>
+      <circle cx="200" cy="200" r="90" stroke-width="1.5"/>
+      <ellipse class="faint" cx="200" cy="200" rx="60" ry="190" stroke-width="1"/>
+      <ellipse class="faint" cx="200" cy="200" rx="120" ry="190" stroke-width="1"/>
+      <path class="faint" d="M10 200h380M200 10v380" stroke-width="1"/>
+      <path d="M200 70 228 200 200 330 172 200Z" fill="#1f5a5c" stroke="none"/>
+      <path d="M200 70 228 200 200 200Z" fill="#16222e" stroke="none"/>
+      <path d="M70 200 200 186 330 200 200 214Z" fill="#b5652d" stroke="none" opacity=".85"/>
+      <circle cx="200" cy="200" r="9" fill="#f6f3ec" stroke="#16222e" stroke-width="2"/>
+      <g fill="#16222e" stroke="none" font-family="IBM Plex Sans, sans-serif" font-size="13" letter-spacing="2" text-anchor="middle">
+        <text x="200" y="52">DATOS</text>
+        <text x="200" y="360">TERRITORIO</text>
+        <text x="352" y="204">NORMA</text>
+        <text x="48" y="204">EVIDENCIA</text>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<!-- CONTEXTO -->
+<section id="contexto">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 — Contexto</div>
+      <div>
+        <h2>Cuatro exigencias simultáneas sobre los equipos técnicos</h2>
+        <p class="sec-intro">El marco regulatorio de la Ley N° 21.302, la Ley N° 21.496 y sus reglamentos concentra obligaciones de alta densidad metodológica en ventanas de tiempo fijas. Cada una requiere diseño muestral, análisis estadístico, análisis de contenido e integración de fuentes administrativas.</p>
+      </div>
+    </div>
+    <div class="pressures">
+      <article class="pressure">
+        <h3>Acreditación y reevaluación</h3>
+        <p>Diagnóstico institucional, Modelo de Prevención de Delitos, matriz de riesgos y plan anual conforme a los D.S. N° 13 y N° 5.</p>
+        <span class="tag">Continuidad de la ejecución</span>
+      </article>
+      <article class="pressure">
+        <h3>Concursos públicos</h3>
+        <p>Diagnósticos territoriales, caracterización del sujeto de atención y formulación técnica FOT/FPP para cada línea y modalidad.</p>
+        <span class="tag">Puntaje en pertinencia territorial</span>
+      </article>
+      <article class="pressure">
+        <h3>Supervisión y sistematización</h3>
+        <p>Modelos de supervisión interna exigidos por el Servicio de Reinserción Social Juvenil (Mem. 02/108) y análisis de hallazgos entre ciclos.</p>
+        <span class="tag">Evidencia de mejora continua</span>
+      </article>
+      <article class="pressure">
+        <h3>Medición de resultados</h3>
+        <p>Encuestas a NNA y familias, evaluación externa por tribunales, Ministerio Público y Defensoría, y series históricas comparables.</p>
+        <span class="tag">Respaldo propio para la oferta técnica</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- VALOR -->
+<section id="enfoque">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 — Enfoque</div>
+      <div>
+        <h2>Experiencia construida dentro del sector</h2>
+        <p class="sec-intro">Compas reúne el oficio de operar sistemas de información de redes de programas en múltiples regiones del país con la capacidad analítica de una unidad de estudios. El trabajo comienza en la primera semana.</p>
+      </div>
+    </div>
+    <div class="value">
+      <div class="value-item">
+        <h3>Lenguaje técnico y normativo propio</h3>
+        <p>Orientaciones técnicas, líneas de acción, bases de licitación e instrumentos de supervisión forman parte del conocimiento de trabajo cotidiano.</p>
+      </div>
+      <div class="value-item">
+        <h3>Análisis sobre grandes volúmenes</h3>
+        <p>Bases consolidadas con decenas de miles de registros históricos y análisis de contenido asistido sobre supervisiones, informes, actas y carpetas.</p>
+      </div>
+      <div class="value-item">
+        <h3>Fuentes nacionales e institucionales integradas</h3>
+        <p>CEAD, Poder Judicial, Ministerio Público, Defensoría, Carabineros e INE cruzados con las bases internas de cada institución.</p>
+      </div>
+      <div class="value-item">
+        <h3>Entregables listos para el expediente</h3>
+        <p>Documentos con la estructura, el formato y el registro que los servicios esperan recibir, incorporables directamente a la propuesta o a la acreditación.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 — Servicios</div>
+      <div>
+        <h2>Cuatro líneas de trabajo</h2>
+        <p class="sec-intro">Cada línea responde a un momento del ciclo institucional y comparte una misma base metodológica: diagnóstico, análisis, formulación y sistematización.</p>
+      </div>
+    </div>
+    <div class="services">
+      <article class="service">
+        <div class="letter">A</div>
+        <h3>Acreditación y cumplimiento normativo</h3>
+        <p class="desc">Acompañamiento a los procesos de acreditación y reevaluación ante Mejor Niñez y el Servicio de Reinserción Social Juvenil.</p>
+        <ul>
+          <li>Diagnóstico institucional para acreditación: diseño, aplicación y redacción.</li>
+          <li>Modelo de Prevención de Delitos, matriz de riesgos y plan anual.</li>
+          <li>Análisis de contenido de supervisiones y fiscalizaciones para la reacreditación bienal.</li>
+          <li>Muestreo probabilístico proporcional al tamaño (PPT) de carpetas y supervisiones.</li>
+          <li>Modelos de sistematización y supervisión interna (Mem. 02/108).</li>
+          <li>Manual de Buenas Prácticas, Código de Ética y Protocolo de Mejora de la Participación.</li>
+        </ul>
+      </article>
+      <article class="service">
+        <div class="letter">B</div>
+        <h3>Licitaciones y formulación de proyectos</h3>
+        <p class="desc">Componentes diagnósticos y analíticos de las propuestas técnicas presentadas a concurso público.</p>
+        <ul>
+          <li>Diagnósticos territoriales sobre vulneración de derechos y delincuencia juvenil.</li>
+          <li>Caracterización del sujeto de atención por comuna, provincia y región.</li>
+          <li>Mapeo de redes intersectoriales de salud, justicia, educación y municipio.</li>
+          <li>Proyectos ambulatorios, residenciales y de acogimiento familiar.</li>
+          <li>Proyectos de Centros de Cumplimiento para licitaciones del SRSJ.</li>
+          <li>Apoyo a Formularios de Oferta Técnica en sus dimensiones diagnósticas.</li>
+        </ul>
+      </article>
+      <article class="service">
+        <div class="letter">C</div>
+        <h3>Medición, evaluación y estudios</h3>
+        <p class="desc">Instrumentos de medición y estudios institucionales con estándar metodológico verificable.</p>
+        <ul>
+          <li>Encuestas de satisfacción a NNA y familias con series históricas comparables.</li>
+          <li>Evaluación externa con tribunales, Ministerio Público y Defensoría Penal Pública.</li>
+          <li>Evaluación periódica de procesos de intervención psicosocial.</li>
+          <li>Estudios por encargo: desistimiento, salud mental, empleabilidad juvenil, cultura del acogimiento.</li>
+          <li>Mesas técnicas de promoción de salud mental en centros de cumplimiento.</li>
+        </ul>
+      </article>
+      <article class="service">
+        <div class="letter">D</div>
+        <h3>Arquitectura de datos e inteligencia institucional</h3>
+        <p class="desc">Infraestructura de información que sostiene la gestión y se convierte en un activo para futuras licitaciones.</p>
+        <ul>
+          <li>Bases de datos automatizadas por programa, región y año.</li>
+          <li>Indicadores de gestión y tableros de control para la dirección.</li>
+          <li>Informes estadísticos anuales y memorias institucionales.</li>
+          <li>Publicaciones, boletines e infografías sobre la labor institucional.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- MODALIDADES -->
+<section id="modalidades">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 — Modalidades</div>
+      <div>
+        <h2>Formas de contratación</h2>
+        <p class="sec-intro">Tres modalidades combinables según el momento de cada organización. Los valores se expresan en UF y se ajustan al alcance efectivo: programas, regiones, volumen documental y plazo.</p>
+      </div>
+    </div>
+    <div class="modes">
+      <article class="mode">
+        <h3>Encargo puntual</h3>
+        <p>Producto único con alcance, plazo y precio cerrados, pagado contra entrega.</p>
+        <p class="for"><strong>Para</strong>Un concurso específico, un instrumento de medición o un informe estadístico anual.</p>
+      </article>
+      <article class="mode">
+        <h3>Paquete de proceso</h3>
+        <p>Acompañamiento completo de un ciclo regulatorio con coherencia técnica entre todos sus productos.</p>
+        <p class="for"><strong>Para</strong>Acreditación, reevaluación o el conjunto de proyectos de un mismo llamado.</p>
+      </article>
+      <article class="mode">
+        <h3>Unidad de estudios</h3>
+        <p>Horas mensuales acordadas y cartera de productos priorizada trimestralmente por la Dirección.</p>
+        <p class="for"><strong>Para</strong>Instituciones con varios programas y regiones que requieren capacidad analítica continua.</p>
+      </article>
+    </div>
+    <p class="note">Cada encargo se formaliza mediante propuesta escrita. Los trabajos vinculados a concursos públicos incluyen una ronda de ajuste posterior a la publicación de las bases definitivas.</p>
+  </div>
+</section>
+
+<!-- CONFIDENCIALIDAD -->
+<section id="confidencialidad" class="dark">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 — Confidencialidad</div>
+      <div>
+        <h2>Cinco garantías por escrito</h2>
+        <p class="sec-intro">El trabajo involucra bases de datos de NNA, antecedentes de causas, hallazgos de supervisión y estrategias de concurso. La reserva de esa información es la condición del servicio.</p>
+      </div>
+    </div>
+    <div class="guarantees">
+      <article class="guarantee">
+        <span class="n">I</span>
+        <h3>Acuerdo previo</h3>
+        <p>Un acuerdo de confidencialidad recíproco antecede a cualquier entrega de bases, documentos o antecedentes.</p>
+      </article>
+      <article class="guarantee">
+        <span class="n">II</span>
+        <h3>Exclusividad por concurso</h3>
+        <p>Cada llamado, línea de acción y territorio se asesora para una sola institución, por orden de contratación y con declaración escrita.</p>
+      </article>
+      <article class="guarantee">
+        <span class="n">III</span>
+        <h3>Datos disociados</h3>
+        <p>Tratamiento sobre bases anonimizadas conforme a la Ley N° 19.628 y a las obligaciones de reserva del sector.</p>
+      </article>
+      <article class="guarantee">
+        <span class="n">IV</span>
+        <h3>Propiedad del cliente</h3>
+        <p>Productos, bases, instrumentos y metodologías del encargo pertenecen íntegramente a la institución contratante.</p>
+      </article>
+      <article class="guarantee">
+        <span class="n">V</span>
+        <h3>Reserva de la relación</h3>
+        <p>La asesoría misma permanece en reserva. Toda mención como referencia requiere autorización expresa y escrita.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PERFIL -->
+<section id="perfil">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 — Perfil</div>
+      <div>
+        <h2>Dirección técnica</h2>
+      </div>
+    </div>
+    <div class="profile">
+      <div>
+        <p><strong>Néstor Matías Paredes Ulloa</strong>, antropólogo, dirige Compas. Durante más de una década ha diseñado, administrado y analizado sistemas de información y bases de datos estadísticas en protección de derechos de la niñez y adolescencia y en reinserción social juvenil.</p>
+        <p>Su trayectoria se desarrolló en la gestión técnica de una red de programas sociales presente en seis regiones del país, bajo convenio con SENAME, Mejor Niñez y el Servicio de Reinserción Social Juvenil, con responsabilidad directa sobre la consolidación estadística institucional, los diagnósticos territoriales para concursos, los procesos de acreditación y los estudios institucionales aplicados.</p>
+        <div class="sources" aria-label="Fuentes de datos integradas">
+          <span>CEAD</span><span>Poder Judicial</span><span>Ministerio Público</span><span>Defensoría Penal Pública</span><span>Carabineros</span><span>INE</span><span>Registros sectoriales</span>
+        </div>
+      </div>
+      <ul class="skills">
+        <li><strong>Análisis estadístico</strong>Stata, SPSS, Python y Excel avanzado sobre bases de gran volumen.</li>
+        <li><strong>Análisis cualitativo y de contenido</strong>Atlas.ti y procesamiento automatizado de corpus documentales extensos.</li>
+        <li><strong>Diseño muestral e indicadores</strong>Muestreo PPT, indicadores de gestión y tableros de control.</li>
+        <li><strong>Formulación técnica</strong>Proyectos concursables y documentos institucionales de estándar público.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section id="proceso">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 — Cómo empezamos</div>
+      <div>
+        <h2>Una ruta de entrada en cuatro etapas</h2>
+        <p class="sec-intro">Las dos primeras etapas permiten a la institución evaluar la pertinencia del servicio antes de contratarlo.</p>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <h3>Reunión de diagnóstico</h3>
+        <p>Noventa minutos para revisar el calendario licitatorio, de acreditación y de reevaluación, e identificar los hitos críticos de los próximos doce meses.</p>
+        <span class="free">Sin costo</span>
+      </div>
+      <div class="step">
+        <h3>Informe de brechas</h3>
+        <p>Documento breve que ubica la mayor exposición técnica de la institución y ordena las prioridades por urgencia e impacto.</p>
+        <span class="free">Sin costo</span>
+      </div>
+      <div class="step">
+        <h3>Propuesta formal</h3>
+        <p>Alcance, entregables, plazos, valores y acuerdo de confidencialidad, sometidos a la Dirección Ejecutiva.</p>
+      </div>
+      <div class="step">
+        <h3>Ejecución</h3>
+        <p>Desarrollo del encargo con reportes de avance quincenales y una contraparte técnica designada por la institución.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <p class="eyebrow">Contacto</p>
+        <h2>Agendar una reunión de diagnóstico</h2>
+        <p class="sec-intro">Escriba indicando el nombre de la institución, las líneas de acción que ejecuta y el hito más próximo de su calendario.</p>
+        <div class="actions" style="margin-top:28px">
+          <a class="btn btn-primary" href="mailto:nestor.antropos@gmail.com?subject=Reuni%C3%B3n%20de%20diagn%C3%B3stico%20%E2%80%94%20Compas">Escribir un correo</a>
+        </div>
+      </div>
+      <div class="contact-card">
+        <dl>
+          <dt>Dirección técnica</dt>
+          <dd>Néstor Matías Paredes Ulloa</dd>
+          <dt>Correo</dt>
+          <dd><a href="mailto:nestor.antropos@gmail.com">nestor.antropos@gmail.com</a></dd>
+          <dt>Teléfono</dt>
+          <dd><a href="tel:+56989948724">+56 9 8994 8724</a></dd>
+          <dt>Domicilio</dt>
+          <dd>Los Ángeles, Región del Biobío · cobertura nacional</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Compas SpA</strong> · Estudios e Inteligencia Institucional · RUT 78.528.125-K</p>
+    <p>Los Ángeles, Chile · © <span id="y">2026</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var b=document.querySelector('.menu-btn'),n=document.getElementById('menu');
+  b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+  n.addEventListener('click',function(e){if(e.target.tagName==='A'){n.classList.remove('open');b.setAttribute('aria-expanded','false')}});
+  document.getElementById('y').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
